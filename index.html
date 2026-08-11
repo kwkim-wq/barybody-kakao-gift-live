@@ -142,9 +142,37 @@
     margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--line);
   }
 
+  /* 주간 추이 차트 — 라이브 주는 진한 막대 + 아래 점으로 표시 */
+  .chart { display: flex; flex-direction: column; gap: 8px; }
+  .chart-plot {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    align-items: end; gap: 8px; height: 170px;
+    padding: 12px 10px 0; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 6px;
+  }
+  .col { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; gap: 5px; }
+  .col .val {
+    font-size: 10.5px; font-weight: 700; color: var(--muted);
+    text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .col .stem { background: var(--bar); border-radius: 3px 3px 0 0; min-height: 2px; }
+  .col.is-live .stem { background: var(--accent); }
+  .col.is-live .val { color: var(--accent); font-weight: 800; }
+  .chart-axis {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; padding: 0 10px;
+  }
+  .chart-axis span {
+    font-size: 10.5px; color: var(--muted); text-align: center;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .chart-axis .live { color: var(--accent); font-weight: 700; }
+
   @media (max-width: 560px) {
     .wrap { padding: 36px 18px 56px; }
     h1 { font-size: 23px; }
+    .chart-plot { height: 140px; gap: 4px; }
+    .col .val { font-size: 9px; }
+    .chart-axis span { font-size: 9px; }
   }
 </style>
 
@@ -165,6 +193,14 @@
         <li>주간 등락폭이 <b>170만원 → 54만원</b>으로 줄어듦</li>
         <li>다만 7/6 주에 <b>4,566,000원</b>으로 이미 최고치를 찍은 적 있음</li>
       </ul>
+    </div>
+
+    <div>
+      <h3>주간 추이 (진한 막대 = 라이브 있던 주)</h3>
+      <div class="chart">
+        <div class="chart-plot"><div class="col"><div class="val">332만</div><div class="stem" style="height:61.9%"></div></div><div class="col"><div class="val">311만</div><div class="stem" style="height:57.9%"></div></div><div class="col"><div class="val">338만</div><div class="stem" style="height:62.9%"></div></div><div class="col"><div class="val">387만</div><div class="stem" style="height:72.0%"></div></div><div class="col"><div class="val">457만</div><div class="stem" style="height:85.0%"></div></div><div class="col"><div class="val">286만</div><div class="stem" style="height:53.3%"></div></div><div class="col is-live"><div class="val">421만</div><div class="stem" style="height:78.3%"></div></div><div class="col is-live"><div class="val">453만</div><div class="stem" style="height:84.4%"></div></div><div class="col"><div class="val">399만</div><div class="stem" style="height:74.3%"></div></div></div>
+        <div class="chart-axis"><span class="">6/08</span><span class="">6/15</span><span class="">6/22</span><span class="">6/29</span><span class="">7/06</span><span class="">7/13</span><span class="live">7/20</span><span class="live">7/27</span><span class="">8/03</span></div>
+      </div>
     </div>
 
     <div>
@@ -250,6 +286,14 @@
         <li>라이브 전에는 주 <b>0~20만원</b>대, 매출이 아예 없는 주도 많음</li>
         <li>라이브 주 <b>277만원 · 157만원</b> → 다음 주 <b>21만원</b></li>
       </ul>
+    </div>
+
+    <div>
+      <h3>주간 추이 (진한 막대 = 라이브 있던 주)</h3>
+      <div class="chart">
+        <div class="chart-plot"><div class="col"><div class="val">6만</div><div class="stem" style="height:1.8%"></div></div><div class="col"><div class="val">0</div><div class="stem" style="height:0.0%"></div></div><div class="col"><div class="val">0</div><div class="stem" style="height:0.0%"></div></div><div class="col"><div class="val">6만</div><div class="stem" style="height:1.8%"></div></div><div class="col"><div class="val">0</div><div class="stem" style="height:0.0%"></div></div><div class="col"><div class="val">16만</div><div class="stem" style="height:4.8%"></div></div><div class="col is-live"><div class="val">277만</div><div class="stem" style="height:85.0%"></div></div><div class="col is-live"><div class="val">157만</div><div class="stem" style="height:48.2%"></div></div><div class="col"><div class="val">21만</div><div class="stem" style="height:6.6%"></div></div></div>
+        <div class="chart-axis"><span class="">6/08</span><span class="">6/15</span><span class="">6/22</span><span class="">6/29</span><span class="">7/06</span><span class="">7/13</span><span class="live">7/20</span><span class="live">7/27</span><span class="">8/03</span></div>
+      </div>
     </div>
 
     <div>
