@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; }
+</style>
+</head>
+<body>
+<title>카카오 선물하기 — 쇼핑라이브 전후</title>
+<style>
+  :root {
+    --ground: #FAF9F5;
+    --surface: #FFFFFF;
+    --line: #E4E0D6;
+    --text: #1C1A15;
+    --muted: #6E6757;
+    --accent: #9C7414;
+    --accent-soft: #EFE3C6;
+    --neg: #A33C2C;
+    --bar: #C9BC9A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #15140F;
+      --surface: #1E1D16;
+      --line: #33301F;
+      --text: #EDEAE0;
+      --muted: #9C9483;
+      --accent: #D9AC45;
+      --accent-soft: #3A3016;
+      --neg: #D97A66;
+      --bar: #554E36;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #15140F;
+    --surface: #1E1D16;
+    --line: #33301F;
+    --text: #EDEAE0;
+    --muted: #9C9483;
+    --accent: #D9AC45;
+    --accent-soft: #3A3016;
+    --neg: #D97A66;
+    --bar: #554E36;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .verdict {
+    font-size: 15.5px;
+    color: var(--text);
+    margin: 0;
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+  }
+  .verdict b { color: var(--accent); }
+
+  h2 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  th, td { padding: 11px 8px; text-align: left; font-size: 14px; }
+  th {
+    font-size: 11.5px; font-weight: 700; color: var(--muted);
+    letter-spacing: 0.03em; border-bottom: 1px solid var(--line);
+  }
+  td { border-bottom: 1px solid var(--line); }
+  .num { text-align: right; white-space: nowrap; font-weight: 600; }
+  .sub { color: var(--muted); font-size: 12.5px; font-weight: 400; }
+  tr.hl td { background: var(--accent-soft); }
+  tr.hl .num { color: var(--accent); font-weight: 800; }
+
+  .bar-cell { width: 34%; min-width: 90px; }
+  .bar { height: 7px; border-radius: 2px; background: var(--bar); }
+  tr.hl .bar { background: var(--accent); }
+
+  td.neg { color: var(--neg); font-weight: 800; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 36px 18px 56px; }
+    h1 { font-size: 23px; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">카카오 선물하기 · 2026.06.23 – 08.06</p>
+    <h1>카카오 쇼핑라이브 전후 매출 변화</h1>
+    <p class="verdict">
+      직후 10일은 직전 10일보다 <b>18.3% 높습니다.</b> 다만 그 직전 10일이 유독 낮았던 구간이라,
+      <b>한 달 평균과 비교하면 +1.6%</b>로 차이가 거의 없습니다.
+    </p>
+  </header>
+
+  <section>
+    <h2>구간별 하루 평균 매출</h2>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>구간</th>
+            <th style="text-align:right">일수</th>
+            <th style="text-align:right">하루 평균</th>
+            <th class="bar-cell"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>직전 10일 <span class="sub">7/13–7/22</span></td>
+            <td class="num sub">10일</td>
+            <td class="num">464,764원</td>
+            <td class="bar-cell"><div class="bar" style="width:69%"></div></td>
+          </tr>
+          <tr>
+            <td>라이브 기간 <span class="sub">7/23–7/27</span></td>
+            <td class="num sub">5일</td>
+            <td class="num">671,954원</td>
+            <td class="bar-cell"><div class="bar" style="width:100%"></div></td>
+          </tr>
+          <tr class="hl">
+            <td>직후 10일 <span class="sub">7/28–8/6</span></td>
+            <td class="num sub">10일</td>
+            <td class="num">549,883원</td>
+            <td class="bar-cell"><div class="bar" style="width:82%"></div></td>
+          </tr>
+          <tr>
+            <td>라이브 전 30일 <span class="sub">6/23–7/22</span></td>
+            <td class="num sub">30일</td>
+            <td class="num">541,003원</td>
+            <td class="bar-cell"><div class="bar" style="width:81%"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>주별 추이 — 등락이 원래 크다</h2>
+    <div class="scroll">
+      <table>
+        <tbody>
+          <tr>
+            <td>7/6–7/12</td>
+            <td class="num">652,286원</td>
+            <td class="bar-cell"><div class="bar" style="width:100%"></div></td>
+          </tr>
+          <tr>
+            <td>7/13–7/19 <span class="sub">유독 낮음</span></td>
+            <td class="num">408,849원</td>
+            <td class="bar-cell"><div class="bar" style="width:63%"></div></td>
+          </tr>
+          <tr>
+            <td>7/20–7/26</td>
+            <td class="num">600,929원</td>
+            <td class="bar-cell"><div class="bar" style="width:92%"></div></td>
+          </tr>
+          <tr class="hl">
+            <td>7/27–8/2 <span class="sub">라이브 후</span></td>
+            <td class="num">647,743원</td>
+            <td class="bar-cell"><div class="bar" style="width:99%"></div></td>
+          </tr>
+          <tr>
+            <td>8/3–8/6 <span class="sub">4일</span></td>
+            <td class="num">475,900원</td>
+            <td class="bar-cell"><div class="bar" style="width:73%"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
