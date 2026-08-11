@@ -123,6 +123,25 @@
 
   td.neg { color: var(--neg); font-weight: 800; }
 
+  .channel {
+    display: flex; flex-direction: column; gap: 26px;
+    padding-top: 30px; border-top: 2px solid var(--line);
+  }
+  .channel-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .channel-head h2 {
+    font-size: 20px; font-weight: 800; color: var(--text);
+    letter-spacing: -0.02em; margin: 0; padding: 0; border: 0;
+  }
+  .channel-head .tag {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    background: var(--accent-soft); border-radius: 999px; padding: 3px 10px;
+  }
+  .channel-head .note { font-size: 13px; color: var(--muted); }
+  .channel h3 {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--muted);
+    margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--line);
+  }
+
   @media (max-width: 560px) {
     .wrap { padding: 36px 18px 56px; }
     h1 { font-size: 23px; }
@@ -136,157 +155,153 @@
     <div class="verdict">
       <p class="verdict-lead">결론 : 라이브를 진행한 톡스토어만 매출이 뛰었고, 선물하기는 변화 없음</p>
       <ul class="verdict-list">
-        <li>톡스토어는 하루 평균 <b>7,233원 → 70,770원(+878%)</b>. 라이브 전 30일 중 매출 발생일이 <b>2일뿐</b>이던 채널이 살아남</li>
-        <li>선물하기는 직전 10일보다 18.3% 높지만, 한 달 평균과 비교하면 <b>+1.6%</b>로 사실상 차이 없음</li>
-        <li>다만 톡스토어 증가액은 10일간 <b>635,370원</b> — 광고비 320만원에는 못 미침</li>
+        <li>톡스토어 하루 평균 <b>7,233원 → 70,770원(+878%)</b></li>
+        <li>선물하기는 한 달 평균 대비 <b>+1.6%</b>로 사실상 차이 없음</li>
+        <li>톡스토어 증가액은 10일간 <b>635,370원</b> — 광고비 320만원에는 못 미침</li>
       </ul>
     </div>
   </header>
 
-  <section>
-    <h2>두 채널 비교 — 라이브 전 30일 vs 후 10일</h2>
-    <div class="scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>채널</th>
-            <th style="text-align:right">전 30일 하루평균</th>
-            <th style="text-align:right">후 10일 하루평균</th>
-            <th style="text-align:right">변화</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>선물하기</td>
-            <td class="num">541,003원</td>
-            <td class="num">549,883원</td>
-            <td class="num sub">+1.6%</td>
-          </tr>
-          <tr class="hl">
-            <td>톡스토어 <span class="sub">라이브 진행 채널</span></td>
-            <td class="num">7,233원</td>
-            <td class="num">70,770원</td>
-            <td class="num">+878%</td>
-          </tr>
-        </tbody>
-      </table>
+  <section class="channel">
+    <div class="channel-head">
+      <h2>선물하기</h2>
+      <span class="note">라이브를 하지 않은 채널</span>
+    </div>
+
+    <div>
+      <h3>구간별 하루 평균 매출</h3>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>구간</th>
+              <th style="text-align:right">일수</th>
+              <th style="text-align:right">하루 평균</th>
+              <th class="bar-cell"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>직전 10일 <span class="sub">7/13–7/22</span></td>
+              <td class="num sub">10일</td>
+              <td class="num">464,764원</td>
+              <td class="bar-cell"><div class="bar" style="width:69%"></div></td>
+            </tr>
+            <tr>
+              <td>라이브 기간 <span class="sub">7/23–7/27</span></td>
+              <td class="num sub">5일</td>
+              <td class="num">671,954원</td>
+              <td class="bar-cell"><div class="bar" style="width:100%"></div></td>
+            </tr>
+            <tr class="hl">
+              <td>직후 10일 <span class="sub">7/28–8/6</span></td>
+              <td class="num sub">10일</td>
+              <td class="num">549,883원</td>
+              <td class="bar-cell"><div class="bar" style="width:82%"></div></td>
+            </tr>
+            <tr>
+              <td>라이브 전 30일 <span class="sub">6/23–7/22</span></td>
+              <td class="num sub">30일</td>
+              <td class="num">541,003원</td>
+              <td class="bar-cell"><div class="bar" style="width:81%"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h3>주별 추이 — 등락이 원래 크다</h3>
+      <div class="scroll">
+        <table>
+          <tbody>
+            <tr>
+              <td>7/6–7/12</td>
+              <td class="num">652,286원</td>
+              <td class="bar-cell"><div class="bar" style="width:100%"></div></td>
+            </tr>
+            <tr>
+              <td>7/13–7/19 <span class="sub">유독 낮음</span></td>
+              <td class="num">408,849원</td>
+              <td class="bar-cell"><div class="bar" style="width:63%"></div></td>
+            </tr>
+            <tr>
+              <td>7/20–7/26</td>
+              <td class="num">600,929원</td>
+              <td class="bar-cell"><div class="bar" style="width:92%"></div></td>
+            </tr>
+            <tr class="hl">
+              <td>7/27–8/2 <span class="sub">라이브 후</span></td>
+              <td class="num">647,743원</td>
+              <td class="bar-cell"><div class="bar" style="width:99%"></div></td>
+            </tr>
+            <tr>
+              <td>8/3–8/6 <span class="sub">4일</span></td>
+              <td class="num">475,900원</td>
+              <td class="bar-cell"><div class="bar" style="width:73%"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>톡스토어 — 죽어 있던 채널이 살아남</h2>
-    <div class="scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>구간</th>
-            <th style="text-align:right">일수</th>
-            <th style="text-align:right">총매출</th>
-            <th style="text-align:right">하루 평균</th>
-            <th style="text-align:right">매출 발생일</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>라이브 전 30일 <span class="sub">6/23–7/22</span></td>
-            <td class="num sub">30일</td>
-            <td class="num">217,000원</td>
-            <td class="num">7,233원</td>
-            <td class="num sub">2일</td>
-          </tr>
-          <tr>
-            <td>라이브 2회 <span class="sub">7/23 · 7/27</span></td>
-            <td class="num sub">2일</td>
-            <td class="num">3,653,210원</td>
-            <td class="num sub">—</td>
-            <td class="num sub">2일</td>
-          </tr>
-          <tr class="hl">
-            <td>라이브 후 10일 <span class="sub">7/28–8/6</span></td>
-            <td class="num sub">10일</td>
-            <td class="num">707,700원</td>
-            <td class="num">70,770원</td>
-            <td class="num sub">6일</td>
-          </tr>
-        </tbody>
-      </table>
+  <section class="channel">
+    <div class="channel-head">
+      <h2>톡스토어</h2>
+      <span class="tag">라이브 진행 채널</span>
     </div>
-  </section>
 
-  <section>
-    <h2>선물하기 — 구간별 하루 평균 매출</h2>
-    <div class="scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>구간</th>
-            <th style="text-align:right">일수</th>
-            <th style="text-align:right">하루 평균</th>
-            <th class="bar-cell"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>직전 10일 <span class="sub">7/13–7/22</span></td>
-            <td class="num sub">10일</td>
-            <td class="num">464,764원</td>
-            <td class="bar-cell"><div class="bar" style="width:69%"></div></td>
-          </tr>
-          <tr>
-            <td>라이브 기간 <span class="sub">7/23–7/27</span></td>
-            <td class="num sub">5일</td>
-            <td class="num">671,954원</td>
-            <td class="bar-cell"><div class="bar" style="width:100%"></div></td>
-          </tr>
-          <tr class="hl">
-            <td>직후 10일 <span class="sub">7/28–8/6</span></td>
-            <td class="num sub">10일</td>
-            <td class="num">549,883원</td>
-            <td class="bar-cell"><div class="bar" style="width:82%"></div></td>
-          </tr>
-          <tr>
-            <td>라이브 전 30일 <span class="sub">6/23–7/22</span></td>
-            <td class="num sub">30일</td>
-            <td class="num">541,003원</td>
-            <td class="bar-cell"><div class="bar" style="width:81%"></div></td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+      <h3>구간별 매출 — 죽어 있던 채널이 살아남</h3>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>구간</th>
+              <th style="text-align:right">일수</th>
+              <th style="text-align:right">총매출</th>
+              <th style="text-align:right">하루 평균</th>
+              <th style="text-align:right">매출 발생일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>라이브 전 30일 <span class="sub">6/23–7/22</span></td>
+              <td class="num sub">30일</td>
+              <td class="num">217,000원</td>
+              <td class="num">7,233원</td>
+              <td class="num sub">2일</td>
+            </tr>
+            <tr>
+              <td>라이브 2회 <span class="sub">7/23 · 7/27</span></td>
+              <td class="num sub">2일</td>
+              <td class="num">3,653,210원</td>
+              <td class="num sub">—</td>
+              <td class="num sub">2일</td>
+            </tr>
+            <tr class="hl">
+              <td>라이브 후 10일 <span class="sub">7/28–8/6</span></td>
+              <td class="num sub">10일</td>
+              <td class="num">707,700원</td>
+              <td class="num">70,770원</td>
+              <td class="num sub">6일</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <h2>선물하기 — 주별 추이(등락이 원래 크다)</h2>
-    <div class="scroll">
-      <table>
-        <tbody>
-          <tr>
-            <td>7/6–7/12</td>
-            <td class="num">652,286원</td>
-            <td class="bar-cell"><div class="bar" style="width:100%"></div></td>
-          </tr>
-          <tr>
-            <td>7/13–7/19 <span class="sub">유독 낮음</span></td>
-            <td class="num">408,849원</td>
-            <td class="bar-cell"><div class="bar" style="width:63%"></div></td>
-          </tr>
-          <tr>
-            <td>7/20–7/26</td>
-            <td class="num">600,929원</td>
-            <td class="bar-cell"><div class="bar" style="width:92%"></div></td>
-          </tr>
-          <tr class="hl">
-            <td>7/27–8/2 <span class="sub">라이브 후</span></td>
-            <td class="num">647,743원</td>
-            <td class="bar-cell"><div class="bar" style="width:99%"></div></td>
-          </tr>
-          <tr>
-            <td>8/3–8/6 <span class="sub">4일</span></td>
-            <td class="num">475,900원</td>
-            <td class="bar-cell"><div class="bar" style="width:73%"></div></td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+      <h3>라이브 전 매출은 두 건이 전부였다</h3>
+      <div class="scroll">
+        <table>
+          <tbody>
+            <tr><td>7/5</td><td class="num">59,000원</td></tr>
+            <tr><td>7/15</td><td class="num">158,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
