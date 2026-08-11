@@ -89,6 +89,10 @@
     border-radius: 4px;
   }
   .verdict b { color: var(--accent); }
+  .verdict-lead { margin: 0; font-weight: 800; letter-spacing: -0.01em; }
+  .verdict-list { margin: 10px 0 0; padding-left: 18px; font-size: 14.5px; color: var(--muted); }
+  .verdict-list li { margin-top: 4px; }
+  .verdict-list b { font-weight: 700; }
 
   h2 {
     font-size: 13px;
@@ -129,10 +133,13 @@
   <header>
     <p class="eyebrow">카카오 선물하기 · 2026.06.23 – 08.06</p>
     <h1>카카오 쇼핑라이브 전후 매출 변화</h1>
-    <p class="verdict">
-      직후 10일은 직전 10일보다 <b>18.3% 높습니다.</b> 다만 그 직전 10일이 유독 낮았던 구간이라,
-      <b>한 달 평균과 비교하면 +1.6%</b>로 차이가 거의 없습니다.
-    </p>
+    <div class="verdict">
+      <p class="verdict-lead">결론 : 쇼핑라이브 직전 10일보다 매출이 높지만 한 달 평균과 비교하면 차이 없음</p>
+      <ul class="verdict-list">
+        <li>쇼핑라이브 직후 10일은 직전 10일보다 매출이 <b>18.3% 높음</b></li>
+        <li>하지만 한 달 평균과 비교하면 <b>+1.6%</b>로 거의 매출 차이가 없음</li>
+      </ul>
+    </div>
   </header>
 
   <section>
