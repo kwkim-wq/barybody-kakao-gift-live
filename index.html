@@ -142,24 +142,33 @@
     margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--line);
   }
 
-  /* 주간 추이 차트 — 라이브 주는 진한 막대 + 아래 점으로 표시 */
-  .chart { display: flex; flex-direction: column; gap: 8px; }
-  .chart-plot {
-    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
-    align-items: end; gap: 8px; height: 170px;
-    padding: 12px 10px 0; background: var(--surface);
-    border: 1px solid var(--line); border-radius: 6px;
+  /* 주간 추이 선차트 — 라이브 주는 진한 점 + 세로 안내선 */
+  .chart { display: flex; flex-direction: column; gap: 6px; }
+  .chart-svg {
+    width: 100%; height: 200px; display: block;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
   }
-  .col { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; gap: 5px; }
-  .col .val {
-    font-size: 10.5px; font-weight: 700; color: var(--muted);
-    text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap;
+  /*  가로만 늘어나는 viewBox(preserveAspectRatio=none)라 선 두께는 vector-effect 로 고정한다.
+      안 그러면 화면이 넓을수록 선이 굵어 보인다. */
+  .chart-svg .line {
+    fill: none; stroke: var(--accent); stroke-width: 2;
+    stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke;
   }
-  .col .stem { background: var(--bar); border-radius: 3px 3px 0 0; min-height: 2px; }
-  .col.is-live .stem { background: var(--accent); }
-  .col.is-live .val { color: var(--accent); font-weight: 800; }
+  .chart-svg .area { fill: var(--accent-soft); opacity: 0.5; }
+  .chart-svg .guide {
+    stroke: var(--accent); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.4;
+    vector-effect: non-scaling-stroke;
+  }
+  .chart-svg .dot {
+    fill: var(--surface); stroke: var(--accent); stroke-width: 2; vector-effect: non-scaling-stroke;
+  }
+  .chart-svg .dot.is-live { fill: var(--accent); }
+  .chart-svg .vlabel {
+    fill: var(--muted); font-size: 11px; font-weight: 700; text-anchor: middle; font-family: inherit;
+  }
+  .chart-svg .vlabel.is-live { fill: var(--accent); font-weight: 800; }
   .chart-axis {
-    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; padding: 0 10px;
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; padding: 0 14px;
   }
   .chart-axis span {
     font-size: 10.5px; color: var(--muted); text-align: center;
@@ -170,8 +179,7 @@
   @media (max-width: 560px) {
     .wrap { padding: 36px 18px 56px; }
     h1 { font-size: 23px; }
-    .chart-plot { height: 140px; gap: 4px; }
-    .col .val { font-size: 9px; }
+    .chart-svg { height: 165px; }
     .chart-axis span { font-size: 9px; }
   }
 </style>
@@ -196,9 +204,12 @@
     </div>
 
     <div>
-      <h3>주간 추이 (진한 막대 = 라이브 있던 주)</h3>
+      <h3>주간 추이 (진한 점 = 라이브 있던 주)</h3>
       <div class="chart">
-        <div class="chart-plot"><div class="col"><div class="val">332만</div><div class="stem" style="height:61.9%"></div></div><div class="col"><div class="val">311만</div><div class="stem" style="height:57.9%"></div></div><div class="col"><div class="val">338만</div><div class="stem" style="height:62.9%"></div></div><div class="col"><div class="val">387만</div><div class="stem" style="height:72.0%"></div></div><div class="col"><div class="val">457만</div><div class="stem" style="height:85.0%"></div></div><div class="col"><div class="val">286만</div><div class="stem" style="height:53.3%"></div></div><div class="col is-live"><div class="val">421만</div><div class="stem" style="height:78.3%"></div></div><div class="col is-live"><div class="val">453만</div><div class="stem" style="height:84.4%"></div></div><div class="col"><div class="val">399만</div><div class="stem" style="height:74.3%"></div></div></div>
+        <svg class="chart-svg" viewBox="0 0 720 200" preserveAspectRatio="none" role="img" aria-label="주간 매출 추이">
+          <path class="area" d="M18.0,180.0 L18.0,69.3 L103.5,76.4 L189.0,67.5 L274.5,51.2 L360.0,28.0 L445.5,84.7 L531.0,40.0 L616.5,29.1 L702.0,47.1 L702.0,180.0 Z"/><line class="guide" x1="531.0" y1="18.0" x2="531.0" y2="180.0"/><line class="guide" x1="616.5" y1="18.0" x2="616.5" y2="180.0"/>
+          <polyline class="line" points="18.0,69.3 103.5,76.4 189.0,67.5 274.5,51.2 360.0,28.0 445.5,84.7 531.0,40.0 616.5,29.1 702.0,47.1"/><circle class="dot" cx="18.0" cy="69.3" r="3"/><circle class="dot" cx="103.5" cy="76.4" r="3"/><circle class="dot" cx="189.0" cy="67.5" r="3"/><circle class="dot" cx="274.5" cy="51.2" r="3"/><circle class="dot" cx="360.0" cy="28.0" r="3"/><circle class="dot" cx="445.5" cy="84.7" r="3"/><circle class="dot is-live" cx="531.0" cy="40.0" r="4.5"/><circle class="dot is-live" cx="616.5" cy="29.1" r="4.5"/><circle class="dot" cx="702.0" cy="47.1" r="3"/><text class="vlabel" x="18.0" y="59.3">332만</text><text class="vlabel" x="103.5" y="66.4">311만</text><text class="vlabel" x="189.0" y="57.5">338만</text><text class="vlabel" x="274.5" y="41.2">387만</text><text class="vlabel" x="360.0" y="18.0">457만</text><text class="vlabel" x="445.5" y="74.7">286만</text><text class="vlabel is-live" x="531.0" y="30.0">421만</text><text class="vlabel is-live" x="616.5" y="19.1">453만</text><text class="vlabel" x="702.0" y="37.1">399만</text>
+        </svg>
         <div class="chart-axis"><span class="">6/08</span><span class="">6/15</span><span class="">6/22</span><span class="">6/29</span><span class="">7/06</span><span class="">7/13</span><span class="live">7/20</span><span class="live">7/27</span><span class="">8/03</span></div>
       </div>
     </div>
@@ -289,9 +300,12 @@
     </div>
 
     <div>
-      <h3>주간 추이 (진한 막대 = 라이브 있던 주)</h3>
+      <h3>주간 추이 (진한 점 = 라이브 있던 주)</h3>
       <div class="chart">
-        <div class="chart-plot"><div class="col"><div class="val">6만</div><div class="stem" style="height:1.8%"></div></div><div class="col"><div class="val">0</div><div class="stem" style="height:0.0%"></div></div><div class="col"><div class="val">0</div><div class="stem" style="height:0.0%"></div></div><div class="col"><div class="val">6만</div><div class="stem" style="height:1.8%"></div></div><div class="col"><div class="val">0</div><div class="stem" style="height:0.0%"></div></div><div class="col"><div class="val">16만</div><div class="stem" style="height:4.8%"></div></div><div class="col is-live"><div class="val">277만</div><div class="stem" style="height:85.0%"></div></div><div class="col is-live"><div class="val">157만</div><div class="stem" style="height:48.2%"></div></div><div class="col"><div class="val">21만</div><div class="stem" style="height:6.6%"></div></div></div>
+        <svg class="chart-svg" viewBox="0 0 720 200" preserveAspectRatio="none" role="img" aria-label="주간 매출 추이">
+          <path class="area" d="M18.0,180.0 L18.0,176.8 L103.5,180.0 L189.0,180.0 L274.5,176.8 L360.0,180.0 L445.5,171.3 L531.0,28.0 L616.5,93.8 L702.0,168.3 L702.0,180.0 Z"/><line class="guide" x1="531.0" y1="18.0" x2="531.0" y2="180.0"/><line class="guide" x1="616.5" y1="18.0" x2="616.5" y2="180.0"/>
+          <polyline class="line" points="18.0,176.8 103.5,180.0 189.0,180.0 274.5,176.8 360.0,180.0 445.5,171.3 531.0,28.0 616.5,93.8 702.0,168.3"/><circle class="dot" cx="18.0" cy="176.8" r="3"/><circle class="dot" cx="103.5" cy="180.0" r="3"/><circle class="dot" cx="189.0" cy="180.0" r="3"/><circle class="dot" cx="274.5" cy="176.8" r="3"/><circle class="dot" cx="360.0" cy="180.0" r="3"/><circle class="dot" cx="445.5" cy="171.3" r="3"/><circle class="dot is-live" cx="531.0" cy="28.0" r="4.5"/><circle class="dot is-live" cx="616.5" cy="93.8" r="4.5"/><circle class="dot" cx="702.0" cy="168.3" r="3"/><text class="vlabel" x="18.0" y="166.8">6만</text><text class="vlabel" x="103.5" y="170.0">0만</text><text class="vlabel" x="189.0" y="170.0">0만</text><text class="vlabel" x="274.5" y="166.8">6만</text><text class="vlabel" x="360.0" y="170.0">0만</text><text class="vlabel" x="445.5" y="161.3">16만</text><text class="vlabel is-live" x="531.0" y="18.0">277만</text><text class="vlabel is-live" x="616.5" y="83.8">157만</text><text class="vlabel" x="702.0" y="158.3">21만</text>
+        </svg>
         <div class="chart-axis"><span class="">6/08</span><span class="">6/15</span><span class="">6/22</span><span class="">6/29</span><span class="">7/06</span><span class="">7/13</span><span class="live">7/20</span><span class="live">7/27</span><span class="">8/03</span></div>
       </div>
     </div>
